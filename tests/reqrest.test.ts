@@ -73,77 +73,104 @@ test('Get a single user by Resource Not Found', async ({ request }) => {
     expect(data.error).toBe("Not Found");
 });
 
-test('Create a new user', async ({ request }) => {
-    const successResponse = await request.post(BASE_URL, {
+test('Successfully create a new user', async ({ request }) => {
+    const response = await request.post(BASE_URL, {
         data: { name: "Tari Ari", job: "Sains" }
     });
-    expect(successResponse.ok()).toBeTruthy();
-    expect(successResponse.status()).toBe(201);
 
-    const successData = await successResponse.json();
+    expect(response.ok()).toBeTruthy();
+    expect(response.status()).toBe(201);
 
-    expect(successData.name).toBe("Tari Ari");
-    expect(successData.job).toBe("Sains");
+    const data = await response.json();
 
-    console.log("User Created:", successData);
+    expect(data.name).toBe("Tari Ari");
+    expect(data.job).toBe("Sains");
 
-    
-    const failResponse = await request.post(BASE_URL, {
+    console.log("✅ User Created Successfully:", data);
+});
+
+test('Fail to create a new user with missing data', async ({ request }) => {
+    const response = await request.post(BASE_URL, {
         data: {} 
     });
-    expect(failResponse.ok()).toBeFalsy();
-    expect(failResponse.status()).toBeGreaterThanOrEqual(400);
 
-    const failData = await failResponse.json();
-    expect(failData).toHaveProperty("error");
+    expect(response.ok()).toBeFalsy();
+    expect(response.status()).toBeGreaterThanOrEqual(400);
 
-    console.log("User Creation Failed:", failData);
+    const data = await response.json();
+    expect(data).toHaveProperty("error");
+
+    console.log("✅ User Creation Failed Due to Missing Data:", data);
 });
 
 
 
-test('Update an existing user', async ({ request }) => {
-    const successResponse = await request.put(`${BASE_URL}/2`, {
+
+test('Successfully update an existing user', async ({ request }) => {
+    const response = await request.put(`${BASE_URL}/2`, {
         data: { name: "Ina", job: "Manager" }
     });
 
-    expect(successResponse.ok()).toBeTruthy();
-    expect(successResponse.status()).toBe(200);
+    expect(response.ok()).toBeTruthy();
+    expect(response.status()).toBe(200);
 
-    const successData = await successResponse.json();
+    const data = await response.json();
 
-    expect(successData.name).toBe("Ina");
-    expect(successData.job).toBe("Manager");
+    expect(data.name).toBe("Ina");
+    expect(data.job).toBe("Manager");
+    expect(data).toHaveProperty("updatedAt");
 
-    expect(successData).toHaveProperty("updatedAt");
-
-    console.log("User Updated Successfully:", successData);
-
-    const failResponse = await request.put(`${BASE_URL}/99999`, {
-        data: {} 
-    });
-
-    expect(failResponse.ok()).toBeFalsy();
-    expect(failResponse.status()).toBeGreaterThanOrEqual(400);
-
-    const failData = await failResponse.json();
-
-    expect(failData).toHaveProperty("error");
-
-    console.log("User Update Failed:", failData);
+    console.log("✅ User Updated Successfully:", data);
 });
 
+test('Fail to update user with invalid data', async ({ request }) => {
+    const response = await request.put(`${BASE_URL}/2`, {
+        data: { name: "", job: "" } 
+    });
 
+    expect(response.ok()).toBeFalsy();
+    expect(response.status()).toBeGreaterThanOrEqual(400);
 
-test('Delete a user', async ({ request }) => {
+    const data = await response.json();
+    expect(data).toHaveProperty("error");
+
+    console.log("✅ User Update Failed Due to Invalid Data:", data);
+});
+
+test('Fail to update non-existing user', async ({ request }) => {
+    const response = await request.put(`${BASE_URL}/99999`, {
+        data: { name: "John", job: "Developer" }
+    });
+
+    expect(response.ok()).toBeFalsy();
+    expect(response.status()).toBeGreaterThanOrEqual(400);
+
+    const data = await response.json();
+    expect(data).toHaveProperty("error");
+
+    console.log("✅ User Update Failed (User Not Found):", data);
+});
+
+test('Successfully delete an existing user', async ({ request }) => {
     const response = await request.delete(`${BASE_URL}/3`);
+    
     expect(response.status()).toBe(204);
-
+    
     const body = await response.body();
     expect(body).toBeNull();
   
-    console.log("User deleted successfully");
+    console.log("✅ User deleted successfully");
+});
+
+test('Fail to delete a non-existing user', async ({ request }) => {
+    const response = await request.delete(`${BASE_URL}/99999`); 
     
+    expect(response.status()).toBeGreaterThanOrEqual(400);
+    
+    const errorData = await response.json();
+    expect(errorData).toHaveProperty("error");
+
+    console.log("✅ User deletion failed (User Not Found):", errorData);
 });
 
 test('Register a new user', async ({ request }) => {
@@ -157,29 +184,32 @@ test('Register a new user', async ({ request }) => {
       expect(data.users).toBeUndefined();
 });
 
-test('Login a user', async ({ request }) => {
-    // Skenario sukses: Login dengan email dan password yang benar
-    const successResponse = await request.post(REGISTER_URL, {
+test('Successfully log in a user', async ({ request }) => {
+    const response = await request.post(REGISTER_URL, {
         data: { email: "eve.holt@reqres.in", password: "pistol" }
     });
 
-   
-    expect(successResponse.ok()).toBeTruthy();
+    expect(response.ok()).toBeTruthy();
+    expect(response.status()).toBe(200);
 
-    expect(successResponse.status()).toBe(200);
-    const successData = await successResponse.json();
+    const data = await response.json();
+    expect(data).toHaveProperty("token");
 
-    expect(successData).toHaveProperty("token");
-    console.log("User Logged In Successfully:", successData);
+    console.log("✅ User Logged In Successfully:", data);
+});
 
-    const failResponse = await request.post(REGISTER_URL, {
-        data: { email: "eve.holt@reqres.in" }
+test('Fail to log in a user with missing password', async ({ request }) => {
+    const response = await request.post(REGISTER_URL, {
+        data: { email: "eve.holt@reqres.in" } 
     });
 
-    expect(failResponse.ok()).toBeFalsy();
-    expect(failResponse.status()).toBe(400);
-    const failData = await failResponse.json();
+    expect(response.ok()).toBeFalsy();
+    expect(response.status()).toBe(400);
 
-    expect(failData).toHaveProperty("error");
-    console.log("User Login Failed:", failData);
+    const data = await response.json();
+    expect(data).toHaveProperty("error");
+    expect(data).toHaveProperty("message"); 
+
+    console.log("✅ User Login Failed Due to Missing Password:", data.error, "-", data.message);
 });
+
