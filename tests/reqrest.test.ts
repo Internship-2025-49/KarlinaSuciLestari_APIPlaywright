@@ -4,6 +4,7 @@ const BASE_URL = "https://reqres.in/api/users";
 const DATA_URL = "https://reqres.in/api/users?page=2";
 const SOURCE_URL = "https://reqres.in/api/unknown";
 const REGISTER_URL = "https://reqres.in/api/register";
+const LOGIN_URL = "https://reqres.in/api/login";
 
 test('Get all users', async ({ request }) => {
     const response = await request.get(DATA_URL);
@@ -171,7 +172,7 @@ test('Fail to delete a non-existing user', async ({ request }) => {
     const errorData = await response.json();
     expect(errorData).toHaveProperty("error");
 
-    console.log("✅ User deletion failed (User Not Found):", errorData);
+    console.log("User deletion failed (User Not Found):", errorData);
 });
 
 test('Register a new user', async ({ request }) => {
@@ -186,7 +187,7 @@ test('Register a new user', async ({ request }) => {
 });
 
 test('Successfully log in a user', async ({ request }) => {
-    const response = await request.post(REGISTER_URL, {
+    const response = await request.post(LOGIN_URL, {
         data: { email: "eve.holt@reqres.in", password: "pistol" }
     });
 
@@ -196,11 +197,11 @@ test('Successfully log in a user', async ({ request }) => {
     const data = await response.json();
     expect(data).toHaveProperty("token");
 
-    console.log("✅ User Logged In Successfully:", data);
+    console.log("User Logged In Successfully:", data);
 });
 
 test('Fail to log in a user with missing password', async ({ request }) => {
-    const response = await request.post(REGISTER_URL, {
+    const response = await request.post(LOGIN_URL, {
         data: { email: "eve.holt@reqres.in" } 
     });
 
@@ -211,6 +212,6 @@ test('Fail to log in a user with missing password', async ({ request }) => {
     expect(data).toHaveProperty("error");
     expect(data).toHaveProperty("message"); 
 
-    console.log("✅ User Login Failed Due to Missing Password:", data.error, "-", data.message);
+    console.log("User Login Failed Due to Missing Password:", data.error, "-", data.message);
 });
 

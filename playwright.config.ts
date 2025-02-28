@@ -12,6 +12,8 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  globalSetup: require.resolve('./tests/global-setup'),
+  globalTeardown: require.resolve('./tests/global-teardown'),
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -28,7 +30,8 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
     // baseURL: 'https://jsonplaceholder.typicode.com',
-    baseURL: 'https://reqres.in',
+    baseURL: 'https://reqres.in/api/login',
+    storageState: 'auth.json',
     extraHTTPHeaders: {
       'Accept': 'application/json',
     },
@@ -40,8 +43,18 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'setup db',
+      testMatch: /global\.setup\.ts/,
+      teardown: 'cleanup db',
+    },
+    {
+      name: 'cleanup db',
+      testMatch: /global\.teardown\.ts/,
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup db'],
     },
 
     {
