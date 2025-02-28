@@ -155,12 +155,13 @@ test('Successfully delete an existing user', async ({ request }) => {
     const response = await request.delete(`${BASE_URL}/3`);
     
     expect(response.status()).toBe(204);
+
+    const body = await response.text(); 
+    expect(body).toBe("");
     
-    const body = await response.body();
-    expect(body).toBeNull();
-  
     console.log("✅ User deleted successfully");
 });
+
 
 test('Fail to delete a non-existing user', async ({ request }) => {
     const response = await request.delete(`${BASE_URL}/99999`); 
