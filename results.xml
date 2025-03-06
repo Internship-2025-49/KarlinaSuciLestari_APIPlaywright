@@ -1,0 +1,2190 @@
+<testsuites id="" name="" tests="116" failures="39" skipped="0" errors="0" time="763.473342">
+<testsuite name="global.teardown.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="cleanup db" tests="1" failures="0" skipped="0" time="0.03" errors="0">
+<testcase name="delete database" classname="global.teardown.ts" time="0.03">
+<system-out>
+<![CDATA[deleting test database...
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="global.setup.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="setup db" tests="1" failures="0" skipped="0" time="0.034" errors="0">
+<testcase name="create new database" classname="global.setup.ts" time="0.034">
+<system-out>
+<![CDATA[creating new database...
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="api-mock.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="chromium" tests="3" failures="2" skipped="0" time="67.666" errors="0">
+<testcase name="mocks a fruit and doesn&apos;t call api" classname="api-mock.test.ts" time="5.153">
+</testcase>
+<testcase name="Mock API response with multiple fruits" classname="api-mock.test.ts" time="30.038">
+<failure message="api-mock.test.ts:16:5 Mock API response with multiple fruits" type="FAILURE">
+<![CDATA[  [chromium] › api-mock.test.ts:16:5 › Mock API response with multiple fruits ──────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForSelector: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('text=Cherry') to be visible
+
+
+      31 |   await page.waitForSelector('text=Apple');
+      32 |   await page.waitForSelector('text=Banana');
+    > 33 |   await page.waitForSelector('text=Cherry');
+         |              ^
+      34 |
+      35 |   await expect(page.getByText('Apple')).toBeVisible();
+      36 |   await expect(page.getByText('Banana')).toBeVisible();
+        at C:\testing\api_playwright\tests\api-mock.test.ts:33:14
+]]>
+</failure>
+</testcase>
+<testcase name="Mock API for a POST request" classname="api-mock.test.ts" time="32.475">
+<failure message="api-mock.test.ts:41:5 Mock API for a POST request" type="FAILURE">
+<![CDATA[  [chromium] › api-mock.test.ts:41:5 › Mock API for a POST request ─────────────────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-name')
+
+
+      56 |   
+      57 |    
+    > 58 |     await page.fill('#fruit-name', 'Mango');
+         |                ^
+      59 |     await page.click('#submit-button');
+      60 |   
+      61 |    
+        at C:\testing\api_playwright\tests\api-mock.test.ts:58:16
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="chromium" tests="2" failures="0" skipped="0" time="19.46" errors="0">
+<testcase name="has title" classname="example.spec.ts" time="11.835">
+</testcase>
+<testcase name="get started link" classname="example.spec.ts" time="7.625">
+</testcase>
+</testsuite>
+<testsuite name="fruits.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="chromium" tests="4" failures="4" skipped="0" time="91.293" errors="0">
+<testcase name="API Mocking CRUD Operations › Read (GET) - Fetch all fruits" classname="fruits.test.ts" time="1.061">
+<failure message="fruits.test.ts:23:7 Read (GET) - Fetch all fruits" type="FAILURE">
+<![CDATA[  [chromium] › fruits.test.ts:23:7 › API Mocking CRUD Operations › Read (GET) - Fetch all fruits ───
+
+    Error: expect.toBeVisible: Error: strict mode violation: getByText('Apple') resolved to 2 elements:
+        1) <li>Pineapple</li> aka getByText('Pineapple')
+        2) <li>Apple</li> aka getByText('Apple', { exact: true })
+
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+      - waiting for getByText('Apple')
+
+
+      24 |     await page.goto('https://demo.playwright.dev/api-mocking');
+      25 |
+    > 26 |     await expect(page.getByText('Apple')).toBeVisible();
+         |                                           ^
+      27 |     await expect(page.getByText('Banana')).toBeVisible();
+      28 |   });
+      29 |
+        at C:\testing\api_playwright\tests\fruits.test.ts:26:43
+]]>
+</failure>
+</testcase>
+<testcase name="API Mocking CRUD Operations › Create (POST) - Add a new fruit" classname="fruits.test.ts" time="30.124">
+<failure message="fruits.test.ts:30:7 Create (POST) - Add a new fruit" type="FAILURE">
+<![CDATA[  [chromium] › fruits.test.ts:30:7 › API Mocking CRUD Operations › Create (POST) - Add a new fruit ─
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-name')
+
+
+      46 |     await page.goto('https://demo.playwright.dev/api-mocking');
+      47 |
+    > 48 |     await page.fill('#fruit-name', 'Cherry');
+         |                ^
+      49 |     await page.click('#submit-button');
+      50 |
+      51 |    
+        at C:\testing\api_playwright\tests\fruits.test.ts:48:16
+]]>
+</failure>
+</testcase>
+<testcase name="API Mocking CRUD Operations › Update (PUT) - Modify a fruit name" classname="fruits.test.ts" time="30.056">
+<failure message="fruits.test.ts:59:7 Update (PUT) - Modify a fruit name" type="FAILURE">
+<![CDATA[  [chromium] › fruits.test.ts:59:7 › API Mocking CRUD Operations › Update (PUT) - Modify a fruit name 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-id')
+
+
+      79 |     await page.goto('https://demo.playwright.dev/api-mocking');
+      80 |
+    > 81 |     await page.fill('#fruit-id', '1');  
+         |                ^
+      82 |     await page.fill('#fruit-name', 'Green Apple');
+      83 |     await page.click('#update-button');
+      84 |
+        at C:\testing\api_playwright\tests\fruits.test.ts:81:16
+]]>
+</failure>
+</testcase>
+<testcase name="API Mocking CRUD Operations › Delete (DELETE) - Remove a fruit" classname="fruits.test.ts" time="30.052">
+<failure message="fruits.test.ts:93:7 Delete (DELETE) - Remove a fruit" type="FAILURE">
+<![CDATA[  [chromium] › fruits.test.ts:93:7 › API Mocking CRUD Operations › Delete (DELETE) - Remove a fruit 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-id')
+
+
+      110 |
+      111 |     
+    > 112 |     await page.fill('#fruit-id', '2');
+          |                ^
+      113 |     await page.click('#delete-button');
+      114 |
+      115 |     
+        at C:\testing\api_playwright\tests\fruits.test.ts:112:16
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="menu.spec.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="chromium" tests="1" failures="0" skipped="0" time="1.86" errors="0">
+<testcase name="menu" classname="menu.spec.ts" time="1.86">
+</testcase>
+</testsuite>
+<testsuite name="person.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="chromium" tests="4" failures="0" skipped="0" time="0.807" errors="0">
+<testcase name="Person API Tests › Get persons" classname="person.test.ts" time="0.365">
+<system-out>
+<![CDATA[beforeAll mulai dijalankan...
+beforeAll selesai.
+Response Status: [33m200[39m
+All Persons: [
+  {
+    id: [33m150[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m149[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m148[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m147[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m146[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m145[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m144[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m143[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m142[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m141[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m140[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m139[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m138[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m137[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m136[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m135[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m134[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m133[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m132[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m131[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m130[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  { id: [33m129[39m, name: [32m''[39m, address: [32m''[39m, phone: [32m''[39m },
+  { id: [33m128[39m, name: [32m''[39m, address: [32m''[39m, phone: [32m''[39m },
+  { id: [33m126[39m, name: [32m'Person Seven'[39m, address: [32m''[39m, phone: [32m''[39m },
+  {
+    id: [33m125[39m,
+    name: [32m'Alice '[39m,
+    address: [32m'Jakarta Barat'[39m,
+    phone: [32m'0812345600'[39m
+  },
+  {
+    id: [33m124[39m,
+    name: [32m'Person Five'[39m,
+    address: [32m'Address Five'[39m,
+    phone: [32m'5555555555'[39m
+  },
+  {
+    id: [33m123[39m,
+    name: [32m'Person Four'[39m,
+    address: [32m'Address Four'[39m,
+    phone: [32m'4444444444'[39m
+  },
+  {
+    id: [33m122[39m,
+    name: [32m'Person Three'[39m,
+    address: [32m'Address Three'[39m,
+    phone: [32m'3333333333'[39m
+  },
+  {
+    id: [33m121[39m,
+    name: [32m'Person Two'[39m,
+    address: [32m'Address Two'[39m,
+    phone: [32m'2222222222'[39m
+  },
+  {
+    id: [33m120[39m,
+    name: [32m'Person One'[39m,
+    address: [32m'Address One'[39m,
+    phone: [32m'1111111111'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Person API Tests › Create person" classname="person.test.ts" time="0.311">
+<system-out>
+<![CDATA[Response Status: [33m200[39m
+Created: {
+  id: [33m151[39m,
+  name: [32m'Ari Lestari'[39m,
+  address: [32m'Bobojong'[39m,
+  phone: [32m'123456789'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Person API Tests › Cek dan Update person" classname="person.test.ts" time="0.102">
+<system-err>
+<![CDATA[Person tidak ditemukan. Mungkin sudah dihapus.
+]]>
+</system-err>
+</testcase>
+<testcase name="Person API Tests › Delete person" classname="person.test.ts" time="0.029">
+<system-out>
+<![CDATA[All tests completed.
+]]>
+</system-out>
+<system-err>
+<![CDATA[Tidak ada person untuk dihapus
+]]>
+</system-err>
+</testcase>
+</testsuite>
+<testsuite name="reqrest.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="chromium" tests="17" failures="7" skipped="0" time="7.713" errors="0">
+<testcase name="Get all users" classname="reqrest.test.ts" time="0.405">
+<system-out>
+<![CDATA[Isi seluruh Pengguna
+Users: [
+  {
+    id: [33m7[39m,
+    email: [32m'michael.lawson@reqres.in'[39m,
+    first_name: [32m'Michael'[39m,
+    last_name: [32m'Lawson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/7-image.jpg'[39m
+  },
+  {
+    id: [33m8[39m,
+    email: [32m'lindsay.ferguson@reqres.in'[39m,
+    first_name: [32m'Lindsay'[39m,
+    last_name: [32m'Ferguson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/8-image.jpg'[39m
+  },
+  {
+    id: [33m9[39m,
+    email: [32m'tobias.funke@reqres.in'[39m,
+    first_name: [32m'Tobias'[39m,
+    last_name: [32m'Funke'[39m,
+    avatar: [32m'https://reqres.in/img/faces/9-image.jpg'[39m
+  },
+  {
+    id: [33m10[39m,
+    email: [32m'byron.fields@reqres.in'[39m,
+    first_name: [32m'Byron'[39m,
+    last_name: [32m'Fields'[39m,
+    avatar: [32m'https://reqres.in/img/faces/10-image.jpg'[39m
+  },
+  {
+    id: [33m11[39m,
+    email: [32m'george.edwards@reqres.in'[39m,
+    first_name: [32m'George'[39m,
+    last_name: [32m'Edwards'[39m,
+    avatar: [32m'https://reqres.in/img/faces/11-image.jpg'[39m
+  },
+  {
+    id: [33m12[39m,
+    email: [32m'rachel.howell@reqres.in'[39m,
+    first_name: [32m'Rachel'[39m,
+    last_name: [32m'Howell'[39m,
+    avatar: [32m'https://reqres.in/img/faces/12-image.jpg'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Get List users" classname="reqrest.test.ts" time="0.099">
+<system-out>
+<![CDATA[Isi List Pengguna
+Users: [
+  {
+    id: [33m7[39m,
+    email: [32m'michael.lawson@reqres.in'[39m,
+    first_name: [32m'Michael'[39m,
+    last_name: [32m'Lawson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/7-image.jpg'[39m
+  },
+  {
+    id: [33m8[39m,
+    email: [32m'lindsay.ferguson@reqres.in'[39m,
+    first_name: [32m'Lindsay'[39m,
+    last_name: [32m'Ferguson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/8-image.jpg'[39m
+  },
+  {
+    id: [33m9[39m,
+    email: [32m'tobias.funke@reqres.in'[39m,
+    first_name: [32m'Tobias'[39m,
+    last_name: [32m'Funke'[39m,
+    avatar: [32m'https://reqres.in/img/faces/9-image.jpg'[39m
+  },
+  {
+    id: [33m10[39m,
+    email: [32m'byron.fields@reqres.in'[39m,
+    first_name: [32m'Byron'[39m,
+    last_name: [32m'Fields'[39m,
+    avatar: [32m'https://reqres.in/img/faces/10-image.jpg'[39m
+  },
+  {
+    id: [33m11[39m,
+    email: [32m'george.edwards@reqres.in'[39m,
+    first_name: [32m'George'[39m,
+    last_name: [32m'Edwards'[39m,
+    avatar: [32m'https://reqres.in/img/faces/11-image.jpg'[39m
+  },
+  {
+    id: [33m12[39m,
+    email: [32m'rachel.howell@reqres.in'[39m,
+    first_name: [32m'Rachel'[39m,
+    last_name: [32m'Howell'[39m,
+    avatar: [32m'https://reqres.in/img/faces/12-image.jpg'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by ID" classname="reqrest.test.ts" time="0.069">
+<system-out>
+<![CDATA[Isi berdasarkan id
+User  by ID: {
+  id: [33m2[39m,
+  email: [32m'janet.weaver@reqres.in'[39m,
+  first_name: [32m'Janet'[39m,
+  last_name: [32m'Weaver'[39m,
+  avatar: [32m'https://reqres.in/img/faces/2-image.jpg'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by ID Not Found" classname="reqrest.test.ts" time="0.475">
+<failure message="reqrest.test.ts:36:1 Get a single user by ID Not Found" type="FAILURE">
+<![CDATA[  [chromium] › reqrest.test.ts:36:1 › Get a single user by ID Not Found ────────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "Not Found"
+    Received: undefined
+
+      41 |
+      42 |     expect(data.users).toBeUndefined();
+    > 43 |     expect(data.error).toBe("Not Found");
+         |                        ^
+      44 | });
+      45 |
+      46 |
+        at C:\testing\api_playwright\tests\reqrest.test.ts:43:24
+]]>
+</failure>
+<system-out>
+<![CDATA[Response Body: {}
+]]>
+</system-out>
+</testcase>
+<testcase name="Get all users Resource" classname="reqrest.test.ts" time="0.344">
+<system-out>
+<![CDATA[Resource Users
+List <Resource> : [
+  {
+    id: [33m1[39m,
+    name: [32m'cerulean'[39m,
+    year: [33m2000[39m,
+    color: [32m'#98B2D1'[39m,
+    pantone_value: [32m'15-4020'[39m
+  },
+  {
+    id: [33m2[39m,
+    name: [32m'fuchsia rose'[39m,
+    year: [33m2001[39m,
+    color: [32m'#C74375'[39m,
+    pantone_value: [32m'17-2031'[39m
+  },
+  {
+    id: [33m3[39m,
+    name: [32m'true red'[39m,
+    year: [33m2002[39m,
+    color: [32m'#BF1932'[39m,
+    pantone_value: [32m'19-1664'[39m
+  },
+  {
+    id: [33m4[39m,
+    name: [32m'aqua sky'[39m,
+    year: [33m2003[39m,
+    color: [32m'#7BC4C4'[39m,
+    pantone_value: [32m'14-4811'[39m
+  },
+  {
+    id: [33m5[39m,
+    name: [32m'tigerlily'[39m,
+    year: [33m2004[39m,
+    color: [32m'#E2583E'[39m,
+    pantone_value: [32m'17-1456'[39m
+  },
+  {
+    id: [33m6[39m,
+    name: [32m'blue turquoise'[39m,
+    year: [33m2005[39m,
+    color: [32m'#53B0AE'[39m,
+    pantone_value: [32m'15-5217'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by Resource" classname="reqrest.test.ts" time="0.106">
+<system-out>
+<![CDATA[User: {
+  id: [33m2[39m,
+  name: [32m'fuchsia rose'[39m,
+  year: [33m2001[39m,
+  color: [32m'#C74375'[39m,
+  pantone_value: [32m'17-2031'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by Resource Not Found" classname="reqrest.test.ts" time="0.1">
+<failure message="reqrest.test.ts:67:1 Get a single user by Resource Not Found" type="FAILURE">
+<![CDATA[  [chromium] › reqrest.test.ts:67:1 › Get a single user by Resource Not Found ──────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "Not Found"
+    Received: undefined
+
+      72 |
+      73 |     expect(data.users).toBeUndefined();
+    > 74 |     expect(data.error).toBe("Not Found");
+         |                        ^
+      75 | });
+      76 |
+      77 | test('Successfully create a new user', async ({ request }) => {
+        at C:\testing\api_playwright\tests\reqrest.test.ts:74:24
+]]>
+</failure>
+<system-out>
+<![CDATA[Response Body: {}
+]]>
+</system-out>
+</testcase>
+<testcase name="Successfully create a new user" classname="reqrest.test.ts" time="0.749">
+<system-out>
+<![CDATA[✅ User Created Successfully: {
+  name: [32m'Tari Ari'[39m,
+  job: [32m'Sains'[39m,
+  id: [32m'975'[39m,
+  createdAt: [32m'2025-03-05T04:16:28.575Z'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to create a new user with missing data" classname="reqrest.test.ts" time="0.468">
+<failure message="reqrest.test.ts:93:1 Fail to create a new user with missing data" type="FAILURE">
+<![CDATA[  [chromium] › reqrest.test.ts:93:1 › Fail to create a new user with missing data ──────────────────
+
+    Error: expect(received).toBeFalsy()
+
+    Received: true
+
+       96 |     });
+       97 |
+    >  98 |     expect(response.ok()).toBeFalsy();
+          |                           ^
+       99 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+      100 |
+      101 |     const data = await response.json();
+        at C:\testing\api_playwright\tests\reqrest.test.ts:98:27
+]]>
+</failure>
+</testcase>
+<testcase name="Successfully update an existing user" classname="reqrest.test.ts" time="0.756">
+<system-out>
+<![CDATA[✅ User Updated Successfully: { name: [32m'Ina'[39m, job: [32m'Manager'[39m, updatedAt: [32m'2025-03-05T04:16:31.724Z'[39m }
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to update user with invalid data" classname="reqrest.test.ts" time="0.483">
+<failure message="reqrest.test.ts:127:1 Fail to update user with invalid data" type="FAILURE">
+<![CDATA[  [chromium] › reqrest.test.ts:127:1 › Fail to update user with invalid data ───────────────────────
+
+    Error: expect(received).toBeFalsy()
+
+    Received: true
+
+      130 |     });
+      131 |
+    > 132 |     expect(response.ok()).toBeFalsy();
+          |                           ^
+      133 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+      134 |
+      135 |     const data = await response.json();
+        at C:\testing\api_playwright\tests\reqrest.test.ts:132:27
+]]>
+</failure>
+</testcase>
+<testcase name="Fail to update non-existing user" classname="reqrest.test.ts" time="0.679">
+<failure message="reqrest.test.ts:141:1 Fail to update non-existing user" type="FAILURE">
+<![CDATA[  [chromium] › reqrest.test.ts:141:1 › Fail to update non-existing user ────────────────────────────
+
+    Error: expect(received).toBeFalsy()
+
+    Received: true
+
+      144 |     });
+      145 |
+    > 146 |     expect(response.ok()).toBeFalsy();
+          |                           ^
+      147 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+      148 |
+      149 |     const data = await response.json();
+        at C:\testing\api_playwright\tests\reqrest.test.ts:146:27
+]]>
+</failure>
+</testcase>
+<testcase name="Successfully delete an existing user" classname="reqrest.test.ts" time="0.683">
+<system-out>
+<![CDATA[✅ User deleted successfully
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to delete a non-existing user" classname="reqrest.test.ts" time="0.485">
+<failure message="reqrest.test.ts:167:1 Fail to delete a non-existing user" type="FAILURE">
+<![CDATA[  [chromium] › reqrest.test.ts:167:1 › Fail to delete a non-existing user ──────────────────────────
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 400
+    Received:    204
+
+      168 |     const response = await request.delete(`${BASE_URL}/99999`); 
+      169 |     
+    > 170 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+          |                               ^
+      171 |     
+      172 |     const errorData = await response.json();
+      173 |     expect(errorData).toHaveProperty("error");
+        at C:\testing\api_playwright\tests\reqrest.test.ts:170:31
+]]>
+</failure>
+</testcase>
+<testcase name="Register a new user" classname="reqrest.test.ts" time="0.689">
+<system-out>
+<![CDATA[User Registered: { id: [33m4[39m, token: [32m'QpwL5tke4Pnpja7X4'[39m }
+]]>
+</system-out>
+</testcase>
+<testcase name="Successfully log in a user" classname="reqrest.test.ts" time="0.643">
+<system-out>
+<![CDATA[User Logged In Successfully: { token: [32m'QpwL5tke4Pnpja7X4'[39m }
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to log in a user with missing password" classname="reqrest.test.ts" time="0.48">
+<failure message="reqrest.test.ts:203:1 Fail to log in a user with missing password" type="FAILURE">
+<![CDATA[  [chromium] › reqrest.test.ts:203:1 › Fail to log in a user with missing password ─────────────────
+
+    Error: expect(received).toHaveProperty(path)
+
+    Expected path: "message"
+    Received path: []
+
+    Received value: {"error": "Missing password"}
+
+      211 |     const data = await response.json();
+      212 |     expect(data).toHaveProperty("error");
+    > 213 |     expect(data).toHaveProperty("message"); 
+          |                  ^
+      214 |
+      215 |     console.log("User Login Failed Due to Missing Password:", data.error, "-", data.message);
+      216 | });
+        at C:\testing\api_playwright\tests\reqrest.test.ts:213:18
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="rest.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="chromium" tests="7" failures="0" skipped="0" time="3.237" errors="0">
+<testcase name="has title" classname="rest.test.ts" time="0.397">
+</testcase>
+<testcase name="Create a new user" classname="rest.test.ts" time="0.501">
+</testcase>
+<testcase name="Update a user" classname="rest.test.ts" time="0.486">
+</testcase>
+<testcase name="Delete a user" classname="rest.test.ts" time="0.496">
+</testcase>
+<testcase name="Create a new user with name Luffy" classname="rest.test.ts" time="0.45">
+</testcase>
+<testcase name="Create a new user with name Zoro" classname="rest.test.ts" time="0.471">
+</testcase>
+<testcase name="Create a new user with name Sanji" classname="rest.test.ts" time="0.436">
+</testcase>
+</testsuite>
+<testsuite name="api-mock.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="firefox" tests="3" failures="2" skipped="0" time="68.229" errors="0">
+<testcase name="mocks a fruit and doesn&apos;t call api" classname="api-mock.test.ts" time="8.076">
+</testcase>
+<testcase name="Mock API response with multiple fruits" classname="api-mock.test.ts" time="30.068">
+<failure message="api-mock.test.ts:16:5 Mock API response with multiple fruits" type="FAILURE">
+<![CDATA[  [firefox] › api-mock.test.ts:16:5 › Mock API response with multiple fruits ───────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForSelector: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('text=Cherry') to be visible
+
+
+      31 |   await page.waitForSelector('text=Apple');
+      32 |   await page.waitForSelector('text=Banana');
+    > 33 |   await page.waitForSelector('text=Cherry');
+         |              ^
+      34 |
+      35 |   await expect(page.getByText('Apple')).toBeVisible();
+      36 |   await expect(page.getByText('Banana')).toBeVisible();
+        at C:\testing\api_playwright\tests\api-mock.test.ts:33:14
+]]>
+</failure>
+</testcase>
+<testcase name="Mock API for a POST request" classname="api-mock.test.ts" time="30.085">
+<failure message="api-mock.test.ts:41:5 Mock API for a POST request" type="FAILURE">
+<![CDATA[  [firefox] › api-mock.test.ts:41:5 › Mock API for a POST request ──────────────────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-name')
+
+
+      56 |   
+      57 |    
+    > 58 |     await page.fill('#fruit-name', 'Mango');
+         |                ^
+      59 |     await page.click('#submit-button');
+      60 |   
+      61 |    
+        at C:\testing\api_playwright\tests\api-mock.test.ts:58:16
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="firefox" tests="2" failures="0" skipped="0" time="11.071" errors="0">
+<testcase name="has title" classname="example.spec.ts" time="6.626">
+</testcase>
+<testcase name="get started link" classname="example.spec.ts" time="4.445">
+</testcase>
+</testsuite>
+<testsuite name="fruits.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="firefox" tests="4" failures="4" skipped="0" time="93.405" errors="0">
+<testcase name="API Mocking CRUD Operations › Read (GET) - Fetch all fruits" classname="fruits.test.ts" time="3.156">
+<failure message="fruits.test.ts:23:7 Read (GET) - Fetch all fruits" type="FAILURE">
+<![CDATA[  [firefox] › fruits.test.ts:23:7 › API Mocking CRUD Operations › Read (GET) - Fetch all fruits ────
+
+    Error: expect.toBeVisible: Error: strict mode violation: getByText('Apple') resolved to 2 elements:
+        1) <li>Pineapple</li> aka getByText('Pineapple')
+        2) <li>Apple</li> aka getByText('Apple', { exact: true })
+
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+      - waiting for getByText('Apple')
+
+
+      24 |     await page.goto('https://demo.playwright.dev/api-mocking');
+      25 |
+    > 26 |     await expect(page.getByText('Apple')).toBeVisible();
+         |                                           ^
+      27 |     await expect(page.getByText('Banana')).toBeVisible();
+      28 |   });
+      29 |
+        at C:\testing\api_playwright\tests\fruits.test.ts:26:43
+]]>
+</failure>
+</testcase>
+<testcase name="API Mocking CRUD Operations › Create (POST) - Add a new fruit" classname="fruits.test.ts" time="30.068">
+<failure message="fruits.test.ts:30:7 Create (POST) - Add a new fruit" type="FAILURE">
+<![CDATA[  [firefox] › fruits.test.ts:30:7 › API Mocking CRUD Operations › Create (POST) - Add a new fruit ──
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-name')
+
+
+      46 |     await page.goto('https://demo.playwright.dev/api-mocking');
+      47 |
+    > 48 |     await page.fill('#fruit-name', 'Cherry');
+         |                ^
+      49 |     await page.click('#submit-button');
+      50 |
+      51 |    
+        at C:\testing\api_playwright\tests\fruits.test.ts:48:16
+]]>
+</failure>
+</testcase>
+<testcase name="API Mocking CRUD Operations › Update (PUT) - Modify a fruit name" classname="fruits.test.ts" time="30.058">
+<failure message="fruits.test.ts:59:7 Update (PUT) - Modify a fruit name" type="FAILURE">
+<![CDATA[  [firefox] › fruits.test.ts:59:7 › API Mocking CRUD Operations › Update (PUT) - Modify a fruit name 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-id')
+
+
+      79 |     await page.goto('https://demo.playwright.dev/api-mocking');
+      80 |
+    > 81 |     await page.fill('#fruit-id', '1');  
+         |                ^
+      82 |     await page.fill('#fruit-name', 'Green Apple');
+      83 |     await page.click('#update-button');
+      84 |
+        at C:\testing\api_playwright\tests\fruits.test.ts:81:16
+]]>
+</failure>
+</testcase>
+<testcase name="API Mocking CRUD Operations › Delete (DELETE) - Remove a fruit" classname="fruits.test.ts" time="30.123">
+<failure message="fruits.test.ts:93:7 Delete (DELETE) - Remove a fruit" type="FAILURE">
+<![CDATA[  [firefox] › fruits.test.ts:93:7 › API Mocking CRUD Operations › Delete (DELETE) - Remove a fruit ─
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-id')
+
+
+      110 |
+      111 |     
+    > 112 |     await page.fill('#fruit-id', '2');
+          |                ^
+      113 |     await page.click('#delete-button');
+      114 |
+      115 |     
+        at C:\testing\api_playwright\tests\fruits.test.ts:112:16
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="menu.spec.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="firefox" tests="1" failures="0" skipped="0" time="4.695" errors="0">
+<testcase name="menu" classname="menu.spec.ts" time="4.695">
+</testcase>
+</testsuite>
+<testsuite name="person.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="firefox" tests="4" failures="0" skipped="0" time="1.436" errors="0">
+<testcase name="Person API Tests › Get persons" classname="person.test.ts" time="0.929">
+<system-out>
+<![CDATA[beforeAll mulai dijalankan...
+beforeAll selesai.
+Response Status: [33m200[39m
+All Persons: [
+  {
+    id: [33m148[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m147[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m146[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m145[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m144[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m143[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m142[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m141[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m140[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m139[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m138[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m137[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m136[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m135[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m134[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m133[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m132[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m131[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m130[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  { id: [33m129[39m, name: [32m''[39m, address: [32m''[39m, phone: [32m''[39m },
+  { id: [33m128[39m, name: [32m''[39m, address: [32m''[39m, phone: [32m''[39m },
+  { id: [33m126[39m, name: [32m'Person Seven'[39m, address: [32m''[39m, phone: [32m''[39m },
+  {
+    id: [33m125[39m,
+    name: [32m'Alice '[39m,
+    address: [32m'Jakarta Barat'[39m,
+    phone: [32m'0812345600'[39m
+  },
+  {
+    id: [33m124[39m,
+    name: [32m'Person Five'[39m,
+    address: [32m'Address Five'[39m,
+    phone: [32m'5555555555'[39m
+  },
+  {
+    id: [33m123[39m,
+    name: [32m'Person Four'[39m,
+    address: [32m'Address Four'[39m,
+    phone: [32m'4444444444'[39m
+  },
+  {
+    id: [33m122[39m,
+    name: [32m'Person Three'[39m,
+    address: [32m'Address Three'[39m,
+    phone: [32m'3333333333'[39m
+  },
+  {
+    id: [33m121[39m,
+    name: [32m'Person Two'[39m,
+    address: [32m'Address Two'[39m,
+    phone: [32m'2222222222'[39m
+  },
+  {
+    id: [33m120[39m,
+    name: [32m'Person One'[39m,
+    address: [32m'Address One'[39m,
+    phone: [32m'1111111111'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Person API Tests › Create person" classname="person.test.ts" time="0.433">
+<system-out>
+<![CDATA[Response Status: [33m200[39m
+Created: {
+  id: [33m149[39m,
+  name: [32m'Ari Lestari'[39m,
+  address: [32m'Bobojong'[39m,
+  phone: [32m'123456789'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Person API Tests › Cek dan Update person" classname="person.test.ts" time="0.059">
+<system-err>
+<![CDATA[Person tidak ditemukan. Mungkin sudah dihapus.
+]]>
+</system-err>
+</testcase>
+<testcase name="Person API Tests › Delete person" classname="person.test.ts" time="0.015">
+<system-out>
+<![CDATA[All tests completed.
+]]>
+</system-out>
+<system-err>
+<![CDATA[Tidak ada person untuk dihapus
+]]>
+</system-err>
+</testcase>
+</testsuite>
+<testsuite name="reqrest.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="firefox" tests="17" failures="7" skipped="0" time="8.195" errors="0">
+<testcase name="Get all users" classname="reqrest.test.ts" time="0.245">
+<system-out>
+<![CDATA[Isi seluruh Pengguna
+Users: [
+  {
+    id: [33m7[39m,
+    email: [32m'michael.lawson@reqres.in'[39m,
+    first_name: [32m'Michael'[39m,
+    last_name: [32m'Lawson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/7-image.jpg'[39m
+  },
+  {
+    id: [33m8[39m,
+    email: [32m'lindsay.ferguson@reqres.in'[39m,
+    first_name: [32m'Lindsay'[39m,
+    last_name: [32m'Ferguson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/8-image.jpg'[39m
+  },
+  {
+    id: [33m9[39m,
+    email: [32m'tobias.funke@reqres.in'[39m,
+    first_name: [32m'Tobias'[39m,
+    last_name: [32m'Funke'[39m,
+    avatar: [32m'https://reqres.in/img/faces/9-image.jpg'[39m
+  },
+  {
+    id: [33m10[39m,
+    email: [32m'byron.fields@reqres.in'[39m,
+    first_name: [32m'Byron'[39m,
+    last_name: [32m'Fields'[39m,
+    avatar: [32m'https://reqres.in/img/faces/10-image.jpg'[39m
+  },
+  {
+    id: [33m11[39m,
+    email: [32m'george.edwards@reqres.in'[39m,
+    first_name: [32m'George'[39m,
+    last_name: [32m'Edwards'[39m,
+    avatar: [32m'https://reqres.in/img/faces/11-image.jpg'[39m
+  },
+  {
+    id: [33m12[39m,
+    email: [32m'rachel.howell@reqres.in'[39m,
+    first_name: [32m'Rachel'[39m,
+    last_name: [32m'Howell'[39m,
+    avatar: [32m'https://reqres.in/img/faces/12-image.jpg'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Get List users" classname="reqrest.test.ts" time="0.079">
+<system-out>
+<![CDATA[Isi List Pengguna
+Users: [
+  {
+    id: [33m7[39m,
+    email: [32m'michael.lawson@reqres.in'[39m,
+    first_name: [32m'Michael'[39m,
+    last_name: [32m'Lawson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/7-image.jpg'[39m
+  },
+  {
+    id: [33m8[39m,
+    email: [32m'lindsay.ferguson@reqres.in'[39m,
+    first_name: [32m'Lindsay'[39m,
+    last_name: [32m'Ferguson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/8-image.jpg'[39m
+  },
+  {
+    id: [33m9[39m,
+    email: [32m'tobias.funke@reqres.in'[39m,
+    first_name: [32m'Tobias'[39m,
+    last_name: [32m'Funke'[39m,
+    avatar: [32m'https://reqres.in/img/faces/9-image.jpg'[39m
+  },
+  {
+    id: [33m10[39m,
+    email: [32m'byron.fields@reqres.in'[39m,
+    first_name: [32m'Byron'[39m,
+    last_name: [32m'Fields'[39m,
+    avatar: [32m'https://reqres.in/img/faces/10-image.jpg'[39m
+  },
+  {
+    id: [33m11[39m,
+    email: [32m'george.edwards@reqres.in'[39m,
+    first_name: [32m'George'[39m,
+    last_name: [32m'Edwards'[39m,
+    avatar: [32m'https://reqres.in/img/faces/11-image.jpg'[39m
+  },
+  {
+    id: [33m12[39m,
+    email: [32m'rachel.howell@reqres.in'[39m,
+    first_name: [32m'Rachel'[39m,
+    last_name: [32m'Howell'[39m,
+    avatar: [32m'https://reqres.in/img/faces/12-image.jpg'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by ID" classname="reqrest.test.ts" time="0.066">
+<system-out>
+<![CDATA[Isi berdasarkan id
+User  by ID: {
+  id: [33m2[39m,
+  email: [32m'janet.weaver@reqres.in'[39m,
+  first_name: [32m'Janet'[39m,
+  last_name: [32m'Weaver'[39m,
+  avatar: [32m'https://reqres.in/img/faces/2-image.jpg'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by ID Not Found" classname="reqrest.test.ts" time="0.087">
+<failure message="reqrest.test.ts:36:1 Get a single user by ID Not Found" type="FAILURE">
+<![CDATA[  [firefox] › reqrest.test.ts:36:1 › Get a single user by ID Not Found ─────────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "Not Found"
+    Received: undefined
+
+      41 |
+      42 |     expect(data.users).toBeUndefined();
+    > 43 |     expect(data.error).toBe("Not Found");
+         |                        ^
+      44 | });
+      45 |
+      46 |
+        at C:\testing\api_playwright\tests\reqrest.test.ts:43:24
+]]>
+</failure>
+<system-out>
+<![CDATA[Response Body: {}
+]]>
+</system-out>
+</testcase>
+<testcase name="Get all users Resource" classname="reqrest.test.ts" time="0.371">
+<system-out>
+<![CDATA[Resource Users
+List <Resource> : [
+  {
+    id: [33m1[39m,
+    name: [32m'cerulean'[39m,
+    year: [33m2000[39m,
+    color: [32m'#98B2D1'[39m,
+    pantone_value: [32m'15-4020'[39m
+  },
+  {
+    id: [33m2[39m,
+    name: [32m'fuchsia rose'[39m,
+    year: [33m2001[39m,
+    color: [32m'#C74375'[39m,
+    pantone_value: [32m'17-2031'[39m
+  },
+  {
+    id: [33m3[39m,
+    name: [32m'true red'[39m,
+    year: [33m2002[39m,
+    color: [32m'#BF1932'[39m,
+    pantone_value: [32m'19-1664'[39m
+  },
+  {
+    id: [33m4[39m,
+    name: [32m'aqua sky'[39m,
+    year: [33m2003[39m,
+    color: [32m'#7BC4C4'[39m,
+    pantone_value: [32m'14-4811'[39m
+  },
+  {
+    id: [33m5[39m,
+    name: [32m'tigerlily'[39m,
+    year: [33m2004[39m,
+    color: [32m'#E2583E'[39m,
+    pantone_value: [32m'17-1456'[39m
+  },
+  {
+    id: [33m6[39m,
+    name: [32m'blue turquoise'[39m,
+    year: [33m2005[39m,
+    color: [32m'#53B0AE'[39m,
+    pantone_value: [32m'15-5217'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by Resource" classname="reqrest.test.ts" time="0.112">
+<system-out>
+<![CDATA[User: {
+  id: [33m2[39m,
+  name: [32m'fuchsia rose'[39m,
+  year: [33m2001[39m,
+  color: [32m'#C74375'[39m,
+  pantone_value: [32m'17-2031'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by Resource Not Found" classname="reqrest.test.ts" time="0.109">
+<failure message="reqrest.test.ts:67:1 Get a single user by Resource Not Found" type="FAILURE">
+<![CDATA[  [firefox] › reqrest.test.ts:67:1 › Get a single user by Resource Not Found ───────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "Not Found"
+    Received: undefined
+
+      72 |
+      73 |     expect(data.users).toBeUndefined();
+    > 74 |     expect(data.error).toBe("Not Found");
+         |                        ^
+      75 | });
+      76 |
+      77 | test('Successfully create a new user', async ({ request }) => {
+        at C:\testing\api_playwright\tests\reqrest.test.ts:74:24
+]]>
+</failure>
+<system-out>
+<![CDATA[Response Body: {}
+]]>
+</system-out>
+</testcase>
+<testcase name="Successfully create a new user" classname="reqrest.test.ts" time="0.711">
+<system-out>
+<![CDATA[✅ User Created Successfully: {
+  name: [32m'Tari Ari'[39m,
+  job: [32m'Sains'[39m,
+  id: [32m'774'[39m,
+  createdAt: [32m'2025-03-05T04:08:14.688Z'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to create a new user with missing data" classname="reqrest.test.ts" time="0.761">
+<failure message="reqrest.test.ts:93:1 Fail to create a new user with missing data" type="FAILURE">
+<![CDATA[  [firefox] › reqrest.test.ts:93:1 › Fail to create a new user with missing data ───────────────────
+
+    Error: expect(received).toBeFalsy()
+
+    Received: true
+
+       96 |     });
+       97 |
+    >  98 |     expect(response.ok()).toBeFalsy();
+          |                           ^
+       99 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+      100 |
+      101 |     const data = await response.json();
+        at C:\testing\api_playwright\tests\reqrest.test.ts:98:27
+]]>
+</failure>
+</testcase>
+<testcase name="Successfully update an existing user" classname="reqrest.test.ts" time="0.724">
+<system-out>
+<![CDATA[✅ User Updated Successfully: { name: [32m'Ina'[39m, job: [32m'Manager'[39m, updatedAt: [32m'2025-03-05T04:08:20.488Z'[39m }
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to update user with invalid data" classname="reqrest.test.ts" time="0.726">
+<failure message="reqrest.test.ts:127:1 Fail to update user with invalid data" type="FAILURE">
+<![CDATA[  [firefox] › reqrest.test.ts:127:1 › Fail to update user with invalid data ────────────────────────
+
+    Error: expect(received).toBeFalsy()
+
+    Received: true
+
+      130 |     });
+      131 |
+    > 132 |     expect(response.ok()).toBeFalsy();
+          |                           ^
+      133 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+      134 |
+      135 |     const data = await response.json();
+        at C:\testing\api_playwright\tests\reqrest.test.ts:132:27
+]]>
+</failure>
+</testcase>
+<testcase name="Fail to update non-existing user" classname="reqrest.test.ts" time="0.885">
+<failure message="reqrest.test.ts:141:1 Fail to update non-existing user" type="FAILURE">
+<![CDATA[  [firefox] › reqrest.test.ts:141:1 › Fail to update non-existing user ─────────────────────────────
+
+    Error: expect(received).toBeFalsy()
+
+    Received: true
+
+      144 |     });
+      145 |
+    > 146 |     expect(response.ok()).toBeFalsy();
+          |                           ^
+      147 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+      148 |
+      149 |     const data = await response.json();
+        at C:\testing\api_playwright\tests\reqrest.test.ts:146:27
+]]>
+</failure>
+</testcase>
+<testcase name="Successfully delete an existing user" classname="reqrest.test.ts" time="0.917">
+<system-out>
+<![CDATA[✅ User deleted successfully
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to delete a non-existing user" classname="reqrest.test.ts" time="0.486">
+<failure message="reqrest.test.ts:167:1 Fail to delete a non-existing user" type="FAILURE">
+<![CDATA[  [firefox] › reqrest.test.ts:167:1 › Fail to delete a non-existing user ───────────────────────────
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 400
+    Received:    204
+
+      168 |     const response = await request.delete(`${BASE_URL}/99999`); 
+      169 |     
+    > 170 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+          |                               ^
+      171 |     
+      172 |     const errorData = await response.json();
+      173 |     expect(errorData).toHaveProperty("error");
+        at C:\testing\api_playwright\tests\reqrest.test.ts:170:31
+]]>
+</failure>
+</testcase>
+<testcase name="Register a new user" classname="reqrest.test.ts" time="0.702">
+<system-out>
+<![CDATA[User Registered: { id: [33m4[39m, token: [32m'QpwL5tke4Pnpja7X4'[39m }
+]]>
+</system-out>
+</testcase>
+<testcase name="Successfully log in a user" classname="reqrest.test.ts" time="0.456">
+<system-out>
+<![CDATA[User Logged In Successfully: { token: [32m'QpwL5tke4Pnpja7X4'[39m }
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to log in a user with missing password" classname="reqrest.test.ts" time="0.758">
+<failure message="reqrest.test.ts:203:1 Fail to log in a user with missing password" type="FAILURE">
+<![CDATA[  [firefox] › reqrest.test.ts:203:1 › Fail to log in a user with missing password ──────────────────
+
+    Error: expect(received).toHaveProperty(path)
+
+    Expected path: "message"
+    Received path: []
+
+    Received value: {"error": "Missing password"}
+
+      211 |     const data = await response.json();
+      212 |     expect(data).toHaveProperty("error");
+    > 213 |     expect(data).toHaveProperty("message"); 
+          |                  ^
+      214 |
+      215 |     console.log("User Login Failed Due to Missing Password:", data.error, "-", data.message);
+      216 | });
+        at C:\testing\api_playwright\tests\reqrest.test.ts:213:18
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="rest.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="firefox" tests="7" failures="0" skipped="0" time="3.916" errors="0">
+<testcase name="has title" classname="rest.test.ts" time="0.293">
+</testcase>
+<testcase name="Create a new user" classname="rest.test.ts" time="0.497">
+</testcase>
+<testcase name="Update a user" classname="rest.test.ts" time="0.549">
+</testcase>
+<testcase name="Delete a user" classname="rest.test.ts" time="0.897">
+</testcase>
+<testcase name="Create a new user with name Luffy" classname="rest.test.ts" time="0.423">
+</testcase>
+<testcase name="Create a new user with name Zoro" classname="rest.test.ts" time="0.609">
+</testcase>
+<testcase name="Create a new user with name Sanji" classname="rest.test.ts" time="0.648">
+</testcase>
+</testsuite>
+<testsuite name="api-mock.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="webkit" tests="3" failures="2" skipped="0" time="63.27" errors="0">
+<testcase name="mocks a fruit and doesn&apos;t call api" classname="api-mock.test.ts" time="3.172">
+</testcase>
+<testcase name="Mock API response with multiple fruits" classname="api-mock.test.ts" time="30.063">
+<failure message="api-mock.test.ts:16:5 Mock API response with multiple fruits" type="FAILURE">
+<![CDATA[  [webkit] › api-mock.test.ts:16:5 › Mock API response with multiple fruits ────────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForSelector: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('text=Cherry') to be visible
+
+
+      31 |   await page.waitForSelector('text=Apple');
+      32 |   await page.waitForSelector('text=Banana');
+    > 33 |   await page.waitForSelector('text=Cherry');
+         |              ^
+      34 |
+      35 |   await expect(page.getByText('Apple')).toBeVisible();
+      36 |   await expect(page.getByText('Banana')).toBeVisible();
+        at C:\testing\api_playwright\tests\api-mock.test.ts:33:14
+]]>
+</failure>
+</testcase>
+<testcase name="Mock API for a POST request" classname="api-mock.test.ts" time="30.035">
+<failure message="api-mock.test.ts:41:5 Mock API for a POST request" type="FAILURE">
+<![CDATA[  [webkit] › api-mock.test.ts:41:5 › Mock API for a POST request ───────────────────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-name')
+
+
+      56 |   
+      57 |    
+    > 58 |     await page.fill('#fruit-name', 'Mango');
+         |                ^
+      59 |     await page.click('#submit-button');
+      60 |   
+      61 |    
+        at C:\testing\api_playwright\tests\api-mock.test.ts:58:16
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="example.spec.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="webkit" tests="2" failures="0" skipped="0" time="6.731" errors="0">
+<testcase name="has title" classname="example.spec.ts" time="2.96">
+</testcase>
+<testcase name="get started link" classname="example.spec.ts" time="3.771">
+</testcase>
+</testsuite>
+<testsuite name="fruits.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="webkit" tests="4" failures="4" skipped="0" time="91.907" errors="0">
+<testcase name="API Mocking CRUD Operations › Read (GET) - Fetch all fruits" classname="fruits.test.ts" time="1.637">
+<failure message="fruits.test.ts:23:7 Read (GET) - Fetch all fruits" type="FAILURE">
+<![CDATA[  [webkit] › fruits.test.ts:23:7 › API Mocking CRUD Operations › Read (GET) - Fetch all fruits ─────
+
+    Error: expect.toBeVisible: Error: strict mode violation: getByText('Apple') resolved to 2 elements:
+        1) <li>Pineapple</li> aka getByText('Pineapple')
+        2) <li>Apple</li> aka getByText('Apple', { exact: true })
+
+    Call log:
+      - expect.toBeVisible with timeout 5000ms
+      - waiting for getByText('Apple')
+
+
+      24 |     await page.goto('https://demo.playwright.dev/api-mocking');
+      25 |
+    > 26 |     await expect(page.getByText('Apple')).toBeVisible();
+         |                                           ^
+      27 |     await expect(page.getByText('Banana')).toBeVisible();
+      28 |   });
+      29 |
+        at C:\testing\api_playwright\tests\fruits.test.ts:26:43
+]]>
+</failure>
+</testcase>
+<testcase name="API Mocking CRUD Operations › Create (POST) - Add a new fruit" classname="fruits.test.ts" time="30.056">
+<failure message="fruits.test.ts:30:7 Create (POST) - Add a new fruit" type="FAILURE">
+<![CDATA[  [webkit] › fruits.test.ts:30:7 › API Mocking CRUD Operations › Create (POST) - Add a new fruit ───
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-name')
+
+
+      46 |     await page.goto('https://demo.playwright.dev/api-mocking');
+      47 |
+    > 48 |     await page.fill('#fruit-name', 'Cherry');
+         |                ^
+      49 |     await page.click('#submit-button');
+      50 |
+      51 |    
+        at C:\testing\api_playwright\tests\fruits.test.ts:48:16
+]]>
+</failure>
+</testcase>
+<testcase name="API Mocking CRUD Operations › Update (PUT) - Modify a fruit name" classname="fruits.test.ts" time="30.047">
+<failure message="fruits.test.ts:59:7 Update (PUT) - Modify a fruit name" type="FAILURE">
+<![CDATA[  [webkit] › fruits.test.ts:59:7 › API Mocking CRUD Operations › Update (PUT) - Modify a fruit name 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-id')
+
+
+      79 |     await page.goto('https://demo.playwright.dev/api-mocking');
+      80 |
+    > 81 |     await page.fill('#fruit-id', '1');  
+         |                ^
+      82 |     await page.fill('#fruit-name', 'Green Apple');
+      83 |     await page.click('#update-button');
+      84 |
+        at C:\testing\api_playwright\tests\fruits.test.ts:81:16
+]]>
+</failure>
+</testcase>
+<testcase name="API Mocking CRUD Operations › Delete (DELETE) - Remove a fruit" classname="fruits.test.ts" time="30.167">
+<failure message="fruits.test.ts:93:7 Delete (DELETE) - Remove a fruit" type="FAILURE">
+<![CDATA[  [webkit] › fruits.test.ts:93:7 › API Mocking CRUD Operations › Delete (DELETE) - Remove a fruit ──
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('#fruit-id')
+
+
+      110 |
+      111 |     
+    > 112 |     await page.fill('#fruit-id', '2');
+          |                ^
+      113 |     await page.click('#delete-button');
+      114 |
+      115 |     
+        at C:\testing\api_playwright\tests\fruits.test.ts:112:16
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="menu.spec.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="webkit" tests="1" failures="0" skipped="0" time="3.047" errors="0">
+<testcase name="menu" classname="menu.spec.ts" time="3.047">
+</testcase>
+</testsuite>
+<testsuite name="person.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="webkit" tests="4" failures="0" skipped="0" time="1.186" errors="0">
+<testcase name="Person API Tests › Get persons" classname="person.test.ts" time="0.972">
+<system-out>
+<![CDATA[beforeAll mulai dijalankan...
+beforeAll selesai.
+Response Status: [33m200[39m
+All Persons: [
+  {
+    id: [33m149[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m148[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m147[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m146[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m145[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m144[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m143[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m142[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m141[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m140[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m139[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m138[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m137[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m136[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m135[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m134[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m133[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m132[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m131[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  {
+    id: [33m130[39m,
+    name: [32m'Ari Lestari'[39m,
+    address: [32m'Bobojong'[39m,
+    phone: [32m'123456789'[39m
+  },
+  { id: [33m129[39m, name: [32m''[39m, address: [32m''[39m, phone: [32m''[39m },
+  { id: [33m128[39m, name: [32m''[39m, address: [32m''[39m, phone: [32m''[39m },
+  { id: [33m126[39m, name: [32m'Person Seven'[39m, address: [32m''[39m, phone: [32m''[39m },
+  {
+    id: [33m125[39m,
+    name: [32m'Alice '[39m,
+    address: [32m'Jakarta Barat'[39m,
+    phone: [32m'0812345600'[39m
+  },
+  {
+    id: [33m124[39m,
+    name: [32m'Person Five'[39m,
+    address: [32m'Address Five'[39m,
+    phone: [32m'5555555555'[39m
+  },
+  {
+    id: [33m123[39m,
+    name: [32m'Person Four'[39m,
+    address: [32m'Address Four'[39m,
+    phone: [32m'4444444444'[39m
+  },
+  {
+    id: [33m122[39m,
+    name: [32m'Person Three'[39m,
+    address: [32m'Address Three'[39m,
+    phone: [32m'3333333333'[39m
+  },
+  {
+    id: [33m121[39m,
+    name: [32m'Person Two'[39m,
+    address: [32m'Address Two'[39m,
+    phone: [32m'2222222222'[39m
+  },
+  {
+    id: [33m120[39m,
+    name: [32m'Person One'[39m,
+    address: [32m'Address One'[39m,
+    phone: [32m'1111111111'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Person API Tests › Create person" classname="person.test.ts" time="0.148">
+<system-out>
+<![CDATA[Response Status: [33m200[39m
+Created: {
+  id: [33m150[39m,
+  name: [32m'Ari Lestari'[39m,
+  address: [32m'Bobojong'[39m,
+  phone: [32m'123456789'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Person API Tests › Cek dan Update person" classname="person.test.ts" time="0.047">
+<system-err>
+<![CDATA[Person tidak ditemukan. Mungkin sudah dihapus.
+]]>
+</system-err>
+</testcase>
+<testcase name="Person API Tests › Delete person" classname="person.test.ts" time="0.019">
+<system-out>
+<![CDATA[All tests completed.
+]]>
+</system-out>
+<system-err>
+<![CDATA[Tidak ada person untuk dihapus
+]]>
+</system-err>
+</testcase>
+</testsuite>
+<testsuite name="reqrest.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="webkit" tests="17" failures="7" skipped="0" time="7.468" errors="0">
+<testcase name="Get all users" classname="reqrest.test.ts" time="0.282">
+<system-out>
+<![CDATA[Isi seluruh Pengguna
+Users: [
+  {
+    id: [33m7[39m,
+    email: [32m'michael.lawson@reqres.in'[39m,
+    first_name: [32m'Michael'[39m,
+    last_name: [32m'Lawson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/7-image.jpg'[39m
+  },
+  {
+    id: [33m8[39m,
+    email: [32m'lindsay.ferguson@reqres.in'[39m,
+    first_name: [32m'Lindsay'[39m,
+    last_name: [32m'Ferguson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/8-image.jpg'[39m
+  },
+  {
+    id: [33m9[39m,
+    email: [32m'tobias.funke@reqres.in'[39m,
+    first_name: [32m'Tobias'[39m,
+    last_name: [32m'Funke'[39m,
+    avatar: [32m'https://reqres.in/img/faces/9-image.jpg'[39m
+  },
+  {
+    id: [33m10[39m,
+    email: [32m'byron.fields@reqres.in'[39m,
+    first_name: [32m'Byron'[39m,
+    last_name: [32m'Fields'[39m,
+    avatar: [32m'https://reqres.in/img/faces/10-image.jpg'[39m
+  },
+  {
+    id: [33m11[39m,
+    email: [32m'george.edwards@reqres.in'[39m,
+    first_name: [32m'George'[39m,
+    last_name: [32m'Edwards'[39m,
+    avatar: [32m'https://reqres.in/img/faces/11-image.jpg'[39m
+  },
+  {
+    id: [33m12[39m,
+    email: [32m'rachel.howell@reqres.in'[39m,
+    first_name: [32m'Rachel'[39m,
+    last_name: [32m'Howell'[39m,
+    avatar: [32m'https://reqres.in/img/faces/12-image.jpg'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Get List users" classname="reqrest.test.ts" time="0.084">
+<system-out>
+<![CDATA[Isi List Pengguna
+Users: [
+  {
+    id: [33m7[39m,
+    email: [32m'michael.lawson@reqres.in'[39m,
+    first_name: [32m'Michael'[39m,
+    last_name: [32m'Lawson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/7-image.jpg'[39m
+  },
+  {
+    id: [33m8[39m,
+    email: [32m'lindsay.ferguson@reqres.in'[39m,
+    first_name: [32m'Lindsay'[39m,
+    last_name: [32m'Ferguson'[39m,
+    avatar: [32m'https://reqres.in/img/faces/8-image.jpg'[39m
+  },
+  {
+    id: [33m9[39m,
+    email: [32m'tobias.funke@reqres.in'[39m,
+    first_name: [32m'Tobias'[39m,
+    last_name: [32m'Funke'[39m,
+    avatar: [32m'https://reqres.in/img/faces/9-image.jpg'[39m
+  },
+  {
+    id: [33m10[39m,
+    email: [32m'byron.fields@reqres.in'[39m,
+    first_name: [32m'Byron'[39m,
+    last_name: [32m'Fields'[39m,
+    avatar: [32m'https://reqres.in/img/faces/10-image.jpg'[39m
+  },
+  {
+    id: [33m11[39m,
+    email: [32m'george.edwards@reqres.in'[39m,
+    first_name: [32m'George'[39m,
+    last_name: [32m'Edwards'[39m,
+    avatar: [32m'https://reqres.in/img/faces/11-image.jpg'[39m
+  },
+  {
+    id: [33m12[39m,
+    email: [32m'rachel.howell@reqres.in'[39m,
+    first_name: [32m'Rachel'[39m,
+    last_name: [32m'Howell'[39m,
+    avatar: [32m'https://reqres.in/img/faces/12-image.jpg'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by ID" classname="reqrest.test.ts" time="0.118">
+<system-out>
+<![CDATA[Isi berdasarkan id
+User  by ID: {
+  id: [33m2[39m,
+  email: [32m'janet.weaver@reqres.in'[39m,
+  first_name: [32m'Janet'[39m,
+  last_name: [32m'Weaver'[39m,
+  avatar: [32m'https://reqres.in/img/faces/2-image.jpg'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by ID Not Found" classname="reqrest.test.ts" time="0.512">
+<failure message="reqrest.test.ts:36:1 Get a single user by ID Not Found" type="FAILURE">
+<![CDATA[  [webkit] › reqrest.test.ts:36:1 › Get a single user by ID Not Found ──────────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "Not Found"
+    Received: undefined
+
+      41 |
+      42 |     expect(data.users).toBeUndefined();
+    > 43 |     expect(data.error).toBe("Not Found");
+         |                        ^
+      44 | });
+      45 |
+      46 |
+        at C:\testing\api_playwright\tests\reqrest.test.ts:43:24
+]]>
+</failure>
+<system-out>
+<![CDATA[Response Body: {}
+]]>
+</system-out>
+</testcase>
+<testcase name="Get all users Resource" classname="reqrest.test.ts" time="0.323">
+<system-out>
+<![CDATA[Resource Users
+List <Resource> : [
+  {
+    id: [33m1[39m,
+    name: [32m'cerulean'[39m,
+    year: [33m2000[39m,
+    color: [32m'#98B2D1'[39m,
+    pantone_value: [32m'15-4020'[39m
+  },
+  {
+    id: [33m2[39m,
+    name: [32m'fuchsia rose'[39m,
+    year: [33m2001[39m,
+    color: [32m'#C74375'[39m,
+    pantone_value: [32m'17-2031'[39m
+  },
+  {
+    id: [33m3[39m,
+    name: [32m'true red'[39m,
+    year: [33m2002[39m,
+    color: [32m'#BF1932'[39m,
+    pantone_value: [32m'19-1664'[39m
+  },
+  {
+    id: [33m4[39m,
+    name: [32m'aqua sky'[39m,
+    year: [33m2003[39m,
+    color: [32m'#7BC4C4'[39m,
+    pantone_value: [32m'14-4811'[39m
+  },
+  {
+    id: [33m5[39m,
+    name: [32m'tigerlily'[39m,
+    year: [33m2004[39m,
+    color: [32m'#E2583E'[39m,
+    pantone_value: [32m'17-1456'[39m
+  },
+  {
+    id: [33m6[39m,
+    name: [32m'blue turquoise'[39m,
+    year: [33m2005[39m,
+    color: [32m'#53B0AE'[39m,
+    pantone_value: [32m'15-5217'[39m
+  }
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by Resource" classname="reqrest.test.ts" time="0.35">
+<system-out>
+<![CDATA[User: {
+  id: [33m2[39m,
+  name: [32m'fuchsia rose'[39m,
+  year: [33m2001[39m,
+  color: [32m'#C74375'[39m,
+  pantone_value: [32m'17-2031'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Get a single user by Resource Not Found" classname="reqrest.test.ts" time="0.145">
+<failure message="reqrest.test.ts:67:1 Get a single user by Resource Not Found" type="FAILURE">
+<![CDATA[  [webkit] › reqrest.test.ts:67:1 › Get a single user by Resource Not Found ────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "Not Found"
+    Received: undefined
+
+      72 |
+      73 |     expect(data.users).toBeUndefined();
+    > 74 |     expect(data.error).toBe("Not Found");
+         |                        ^
+      75 | });
+      76 |
+      77 | test('Successfully create a new user', async ({ request }) => {
+        at C:\testing\api_playwright\tests\reqrest.test.ts:74:24
+]]>
+</failure>
+<system-out>
+<![CDATA[Response Body: {}
+]]>
+</system-out>
+</testcase>
+<testcase name="Successfully create a new user" classname="reqrest.test.ts" time="0.68">
+<system-out>
+<![CDATA[✅ User Created Successfully: {
+  name: [32m'Tari Ari'[39m,
+  job: [32m'Sains'[39m,
+  id: [32m'791'[39m,
+  createdAt: [32m'2025-03-05T04:11:55.953Z'[39m
+}
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to create a new user with missing data" classname="reqrest.test.ts" time="0.455">
+<failure message="reqrest.test.ts:93:1 Fail to create a new user with missing data" type="FAILURE">
+<![CDATA[  [webkit] › reqrest.test.ts:93:1 › Fail to create a new user with missing data ────────────────────
+
+    Error: expect(received).toBeFalsy()
+
+    Received: true
+
+       96 |     });
+       97 |
+    >  98 |     expect(response.ok()).toBeFalsy();
+          |                           ^
+       99 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+      100 |
+      101 |     const data = await response.json();
+        at C:\testing\api_playwright\tests\reqrest.test.ts:98:27
+]]>
+</failure>
+</testcase>
+<testcase name="Successfully update an existing user" classname="reqrest.test.ts" time="0.686">
+<system-out>
+<![CDATA[✅ User Updated Successfully: { name: [32m'Ina'[39m, job: [32m'Manager'[39m, updatedAt: [32m'2025-03-05T04:11:58.819Z'[39m }
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to update user with invalid data" classname="reqrest.test.ts" time="0.501">
+<failure message="reqrest.test.ts:127:1 Fail to update user with invalid data" type="FAILURE">
+<![CDATA[  [webkit] › reqrest.test.ts:127:1 › Fail to update user with invalid data ─────────────────────────
+
+    Error: expect(received).toBeFalsy()
+
+    Received: true
+
+      130 |     });
+      131 |
+    > 132 |     expect(response.ok()).toBeFalsy();
+          |                           ^
+      133 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+      134 |
+      135 |     const data = await response.json();
+        at C:\testing\api_playwright\tests\reqrest.test.ts:132:27
+]]>
+</failure>
+</testcase>
+<testcase name="Fail to update non-existing user" classname="reqrest.test.ts" time="0.642">
+<failure message="reqrest.test.ts:141:1 Fail to update non-existing user" type="FAILURE">
+<![CDATA[  [webkit] › reqrest.test.ts:141:1 › Fail to update non-existing user ──────────────────────────────
+
+    Error: expect(received).toBeFalsy()
+
+    Received: true
+
+      144 |     });
+      145 |
+    > 146 |     expect(response.ok()).toBeFalsy();
+          |                           ^
+      147 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+      148 |
+      149 |     const data = await response.json();
+        at C:\testing\api_playwright\tests\reqrest.test.ts:146:27
+]]>
+</failure>
+</testcase>
+<testcase name="Successfully delete an existing user" classname="reqrest.test.ts" time="0.653">
+<system-out>
+<![CDATA[✅ User deleted successfully
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to delete a non-existing user" classname="reqrest.test.ts" time="0.442">
+<failure message="reqrest.test.ts:167:1 Fail to delete a non-existing user" type="FAILURE">
+<![CDATA[  [webkit] › reqrest.test.ts:167:1 › Fail to delete a non-existing user ────────────────────────────
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 400
+    Received:    204
+
+      168 |     const response = await request.delete(`${BASE_URL}/99999`); 
+      169 |     
+    > 170 |     expect(response.status()).toBeGreaterThanOrEqual(400);
+          |                               ^
+      171 |     
+      172 |     const errorData = await response.json();
+      173 |     expect(errorData).toHaveProperty("error");
+        at C:\testing\api_playwright\tests\reqrest.test.ts:170:31
+]]>
+</failure>
+</testcase>
+<testcase name="Register a new user" classname="reqrest.test.ts" time="0.65">
+<system-out>
+<![CDATA[User Registered: { id: [33m4[39m, token: [32m'QpwL5tke4Pnpja7X4'[39m }
+]]>
+</system-out>
+</testcase>
+<testcase name="Successfully log in a user" classname="reqrest.test.ts" time="0.473">
+<system-out>
+<![CDATA[User Logged In Successfully: { token: [32m'QpwL5tke4Pnpja7X4'[39m }
+]]>
+</system-out>
+</testcase>
+<testcase name="Fail to log in a user with missing password" classname="reqrest.test.ts" time="0.472">
+<failure message="reqrest.test.ts:203:1 Fail to log in a user with missing password" type="FAILURE">
+<![CDATA[  [webkit] › reqrest.test.ts:203:1 › Fail to log in a user with missing password ───────────────────
+
+    Error: expect(received).toHaveProperty(path)
+
+    Expected path: "message"
+    Received path: []
+
+    Received value: {"error": "Missing password"}
+
+      211 |     const data = await response.json();
+      212 |     expect(data).toHaveProperty("error");
+    > 213 |     expect(data).toHaveProperty("message"); 
+          |                  ^
+      214 |
+      215 |     console.log("User Login Failed Due to Missing Password:", data.error, "-", data.message);
+      216 | });
+        at C:\testing\api_playwright\tests\reqrest.test.ts:213:18
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="rest.test.ts" timestamp="2025-03-05T04:04:15.437Z" hostname="webkit" tests="7" failures="0" skipped="0" time="3.729" errors="0">
+<testcase name="has title" classname="rest.test.ts" time="0.31">
+</testcase>
+<testcase name="Create a new user" classname="rest.test.ts" time="0.512">
+</testcase>
+<testcase name="Update a user" classname="rest.test.ts" time="0.464">
+</testcase>
+<testcase name="Delete a user" classname="rest.test.ts" time="0.505">
+</testcase>
+<testcase name="Create a new user with name Luffy" classname="rest.test.ts" time="0.437">
+</testcase>
+<testcase name="Create a new user with name Zoro" classname="rest.test.ts" time="1.073">
+</testcase>
+<testcase name="Create a new user with name Sanji" classname="rest.test.ts" time="0.428">
+</testcase>
+</testsuite>
+</testsuites>
